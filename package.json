@@ -1,0 +1,23 @@
+{
+  "name": "wikipedia-langlinks-counter",
+  "version": "1.0.0",
+  "description": "A simple script to count langlinks of a Wikipedia article.",
+  "main": "countLangLinks.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmenRa666/wikipedia-langlinks-counter.git"
+  },
+  "author": "Elias Bassani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmenRa666/wikipedia-langlinks-counter/issues"
+  },
+  "homepage": "https://github.com/AmenRa666/wikipedia-langlinks-counter#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "node-tictoc": "^1.3.0"
+  }
+}
