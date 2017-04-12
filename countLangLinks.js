@@ -8,14 +8,16 @@ const async = require('async')
 // LOGIC
 time.tic()
 let idsFile = fs.readFileSync('ids.txt', 'utf-8').trim()
-let ids = idsFile.split('\n')
+let ids = idsFile.split('\r\n')
 
 let targetFile = 'langlinks.csv'
-fs.appendFileSync(targetFile, 'id,langLinksCount\n')
+fs.writeFileSync(targetFile, 'id,langLinksCount\n')
 
 let articleCount = 0
 
 const countLanglinks = (id, cb) => {
+  let str = "\\(" + id + ",'..',"
+  let regex = new RegExp(str, "g")
   let langlinksCount = 0
   let buffer = '';
   let rs = fs.createReadStream('enwiki-latest-langlinks.sql');
@@ -24,8 +26,6 @@ const countLanglinks = (id, cb) => {
     buffer = lines.pop();
     for (let i = 0; i < lines.length; ++i) {
       let line = lines[i].substr(lines[i].indexOf(',')+1)
-      let str = "\\(" + id + ",'..',"
-      let regex = new RegExp(str, "g")
       let matches = lines[i].match(regex) || []
       langlinksCount = langlinksCount + matches.length
     }
